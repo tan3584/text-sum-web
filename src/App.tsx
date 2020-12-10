@@ -2,12 +2,10 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { FirebaseStoreContext } from './libs/stores/firebase.store';
 import { messaging } from './libs/utils/firebase.util';
-import { retrieveFromStorage, saveToStorage } from './libs/utils/storage.util';
+import { saveToStorage } from './libs/utils/storage.util';
 import { LOCAL_STORAGE_KEY } from './libs/constants/local-storage-key.constants';
-import { LanguageStoreContext } from '@/modules/lang/lang.store';
-import { userRoutes } from './modules/user/routes/front';
 import UserTheme from './themes/user/layout/theme';
-import UserRouter from '@/themes/user/routers';
+import UserRouter from './themes/user/routers';
 
 function App() {
   // const languageStore = React.useContext(LanguageStoreContext);

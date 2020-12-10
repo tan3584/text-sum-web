@@ -17,12 +17,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "experimentalDecorators": true,
     "typeRoots": [
       "./src/libs/types"
-    ],
-    "noFallthroughCasesInSwitch": true
+    ]
   },
   "include": [
     "src"

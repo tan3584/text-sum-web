@@ -1,37 +1,56 @@
-import { AuthenticationStoreContext } from '@/modules/authentication.store';
+import { observer } from 'mobx-react-lite';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import Editor from 'react-medium-editor';
+import 'draftail/dist/draftail.css';
+import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
+import 'draft-js-side-toolbar-plugin/lib/plugin.css';
+import { Formik } from 'formik';
+import { DraftailEditor, BLOCK_TYPE, INLINE_STYLE } from 'draftail';
+import { CreateArticleDto } from 'modules/article/article.dto';
+import { Editor, EditorState } from 'draft-js';
+import 'draft-js/dist/Draft.css';
+import { convertFromRaw, convertToRaw } from 'draft-js';
 
 const CreateArticlePage = () => {
-  const authStore = React.useContext(AuthenticationStoreContext);
-  const history = useHistory();
+  const [text, setText] = React.useState(() => EditorState.createEmpty());
 
-  const [text, setText] = React.useState({
-    text: '',
-  });
+  const handleSave = async (value: any) => {
+    const convertedState = convertToRaw(text.getCurrentContent());
 
-  const handleChange = (text: any, medium: any) => {
-    setText(text);
+    const createArticleData: CreateArticleDto = {
+      subject: '',
+      description: value,
+    };
+
+    console.log({ convertedState, value });
   };
 
   return (
     <>
-      <div className="app">
-        <h1>react-medium-editor</h1>
-        <h3>Html content</h3>
-        <div>{text}</div>
-
-        <h3>Editor #1 (&lt;pre&gt; tag)</h3>
-        <Editor
-          tag="pre"
-          text={text}
-          onChange={handleChange}
-          options={{ toolbar: { buttons: ['bold', 'italic', 'underline'] } }}
-        />
-        <h3>Editor #2</h3>
-        <Editor text={text} onChange={handleChange} />
+      <div className="draf-editor">
+        <Formik
+          initialValues={{ content: null }}
+          onSubmit={(values) => {
+            handleSave(values);
+          }}
+        >
+          {({
+            errors,
+            touched,
+            handleSubmit,
+            setFieldTouched,
+            setFieldValue,
+          }) => (
+            <form onSubmit={handleSubmit}>
+              <div className="form-field">
+                <Editor editorState={text} onChange={setText} />
+              </div>
+              <button type="submit">Submit</button>
+            </form>
+          )}
+        </Formik>
       </div>
     </>
   );
 };
+
+export default observer(CreateArticlePage);

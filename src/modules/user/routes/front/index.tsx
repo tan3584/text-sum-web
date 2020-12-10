@@ -90,4 +90,13 @@ export const userRoutes = [
     isLayout: false,
     isGuarded: false,
   },
+  {
+    path: USER_ROUTERS.CREATE_ARTICLE,
+    name: 'user.verified-email',
+    title: 'New article',
+    exact: true,
+    component: React.lazy(() => import('@/modules/article/pages/create/index')),
+    isLayout: false,
+    isGuarded: false,
+  },
 ];

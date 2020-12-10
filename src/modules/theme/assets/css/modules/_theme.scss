@@ -1,14 +1,20 @@
 $main-wp-background: $white;
 
 body {
-  @include background-gradient(
-    '90deg',
-    $op-background-start,
-    $op-background-end
-  );
+  // @include background-gradient(
+  //   '90deg',
+  //   $op-background-start,
+  //   $op-background-end
+  // );
   min-height: 100vh;
   font-size: $font-size-sm;
   line-height: 1.46;
+}
+
+.draf-editor {
+  font-family: sans-serif;
+  text-align: center;
+  display: block;
 }
 
 .wrapper {
@@ -27,8 +33,7 @@ body {
     border-radius: $border-radius-lg;
     padding: $indent-base;
     box-shadow: $box-main-shadow;
-    background: $op-main-bkg url(#{$op-main-bkg-url}) $indent-base 130px
-      no-repeat;
+    background: $op-main-bkg url(#{$op-main-bkg-url}) $indent-base 130px no-repeat;
     background-size: $op-bkg-size;
     width: 100%;
 
@@ -157,11 +162,13 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
-.image-summary{
+
+.image-summary {
   vertical-align: top;
   display: inline-block;
   text-align: center;
@@ -172,17 +179,45 @@ body {
   border-radius: 10%;
   overflow: hidden;
   margin: 20px 0 20px 20px;
-  .document-wrapper{
+
+  .document-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 120px;
   }
-  img{
+
+  img {
     width: 200px;
     max-height: 100px;
   }
+
   .caption {
     display: block;
   }
+}
+
+/* Override default */
+.Draftail-Toolbar {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Override default */
+.Draftail-Editor {
+  border: none !important;
+  width: 60% !important;
+  margin-top: 100px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Override default */
+.public-DraftEditor-content {
+  font-family: Georgia, "Times New Roman", Times, serif !important;
+}
+
+/* Override default */
+.public-DraftEditorPlaceholder-inner {
+  font-family: Georgia, "Times New Roman", Times, serif !important;
 }
