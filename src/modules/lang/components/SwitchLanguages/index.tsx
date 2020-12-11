@@ -5,9 +5,8 @@ import { Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Customerlanguages, languages } from '@/modules/lang/lang.constants';
 import { retrieveFromStorage, saveToStorage } from '@/libs/utils/storage.util';
-import { AuthenticationStoreContext } from '@/modules/account/authentication.store';
+import { AuthenticationStoreContext } from '@/modules/authentication.store';
 import { AccountStoreContext } from '@/modules/account/account.store';
-import { THEMES } from '@/theme.enum';
 
 /*
  * Props of Component
@@ -15,8 +14,6 @@ import { THEMES } from '@/theme.enum';
 interface ComponentProps {
   className?: string;
 }
-
-const theme = process.env.REACT_APP_THEME || 'truckowner';
 
 const SwitchLanguages = (props: ComponentProps) => {
   const langStore = React.useContext(LanguageStoreContext);
@@ -36,7 +33,7 @@ const SwitchLanguages = (props: ComponentProps) => {
    */
   const onChangeLanguage = async (key: string) => {
     await i18n.changeLanguage(key);
-    langStore.setActiveLanguage(key);
+    // langStore.setActiveLanguage(key);
     saveToStorage('lang', key);
     if (auth.loggedUser && existedToken) {
       await accountStore.changeLanguage(auth.loggedUser.id, existedToken, key);
@@ -58,25 +55,15 @@ const SwitchLanguages = (props: ComponentProps) => {
       <Dropdown className={`box-language ${className ? className : ''}`}>
         <Dropdown.Toggle>{i18n.language}</Dropdown.Toggle>
         <Dropdown.Menu>
-          {theme === THEMES.TADATRUCK
-            ? Customerlanguages.map((lang, index) => (
-                <Dropdown.Item
-                  as="button"
-                  key={`language-item-${index}`}
-                  onClick={() => onChangeLanguage(lang.key)}
-                >
-                  {lang.shortLabel}
-                </Dropdown.Item>
-              ))
-            : languages.map((lang, index) => (
-                <Dropdown.Item
-                  as="button"
-                  key={`language-item-${index}`}
-                  onClick={() => onChangeLanguage(lang.key)}
-                >
-                  {lang.shortLabel}
-                </Dropdown.Item>
-              ))}
+          {languages.map((lang, index) => (
+            <Dropdown.Item
+              as="button"
+              key={`language-item-${index}`}
+              onClick={() => onChangeLanguage(lang.key)}
+            >
+              {lang.shortLabel}
+            </Dropdown.Item>
+          ))}
         </Dropdown.Menu>
       </Dropdown>
     </>

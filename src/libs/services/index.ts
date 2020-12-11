@@ -2,10 +2,8 @@ import axios from 'axios';
 import { handleResponseError } from '@/libs/utils/apis.util';
 import { removeFromStorage } from '@/libs/utils/storage.util';
 import { toast } from 'react-toastify';
-import { THEMES, VALIDATE_TOKEN_URL } from '@/theme.enum';
 import { Errors } from '@/modules/message/message.constants';
 import i18n from 'i18next';
-import LogStore from '@/modules/log/log.store';
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_URL,
@@ -33,7 +31,6 @@ axiosInstance.interceptors.response.use(
 
     if (!error.response) {
       toast.error('Unknown error happened! Please contact admin for support');
-      LogStore.writeLog(error);
       return handleResponseError(error);
     }
 
@@ -62,18 +59,10 @@ axiosInstance.interceptors.response.use(
       messageCode = data?.errorCode ?? '';
     }
 
-    let validateTokenUrl = VALIDATE_TOKEN_URL.TRUCKOWNER;
-    if (process.env.REACT_APP_THEME === THEMES.TADATRUCK) {
-      validateTokenUrl = VALIDATE_TOKEN_URL.TADATRUCK;
-    }
-    if (process.env.REACT_APP_THEME === THEMES.ADMIN) {
-      validateTokenUrl = VALIDATE_TOKEN_URL.ADMIN;
-    }
-
-    if (error.response.config.url === validateTokenUrl) {
-      removeFromStorage('token');
-      window.location.replace('/');
-    }
+    // if (error.response.config.url === validateTokenUrl) {
+    //   removeFromStorage('token');
+    //   window.location.replace('/');
+    // }
     if (messageCode !== '') {
       const error = Errors.find((error) => error.key === messageCode);
       if (error) toast.error(i18n.t(error.label));
