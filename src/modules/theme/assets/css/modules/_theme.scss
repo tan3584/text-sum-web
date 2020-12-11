@@ -1,4 +1,4 @@
-$main-wp-background: $white;
+$main-wp-background: #DAE0E6;
 
 body {
   // @include background-gradient(
@@ -115,11 +115,12 @@ body {
   .main {
     display: block;
     width: 100%;
+    // background: #DAE0E6;
 
     @include media-min($lg) {
       display: inline-block;
-      width: calc(100% - #{$sidebar-width-lg});
-      padding: 0 30px;
+      // width: calc(100% - #{$sidebar-width-lg});
+      // padding: 0 30px;
     }
 
     // @include media-min($xl) {

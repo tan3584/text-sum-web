@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import Menu from '@/modules/theme/components/Menu';
+// import Menu from '@/modules/theme/components/Menu';
 // import { adminMenu } from '@/modules/theme/constants/theme.constants';
 import TopMenu from '@/modules/theme/components/TopMenu';
 import PageTitle from '@/libs/components/PageTitle';
@@ -26,7 +26,7 @@ const WrapperTheme = (props: ComponentProps) => {
   return (
     <>
       <div className={`page-wrapper ${langStore.activeLanguage}`}>
-        <Menu />
+        {/* <Menu /> */}
         <div className="main">
           <TopMenu />
           {pageTitle && (

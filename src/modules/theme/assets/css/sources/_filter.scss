@@ -58,6 +58,7 @@
 
   .block-export {
     text-align: left;
+
     @include media-min($lg) {
       margin-right: 20px;
     }

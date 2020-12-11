@@ -9,6 +9,7 @@ import { CreateArticleDto } from 'modules/article/article.dto';
 import { Editor, EditorState } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import { convertFromRaw, convertToRaw } from 'draft-js';
+import WrapperTheme from '@/modules/theme/components/Wrapper';
 
 const CreateArticlePage = () => {
   const [text, setText] = React.useState(() => EditorState.createEmpty());
@@ -26,29 +27,31 @@ const CreateArticlePage = () => {
 
   return (
     <>
-      <div className="draf-editor">
-        <Formik
-          initialValues={{ content: null }}
-          onSubmit={(values) => {
-            handleSave(values);
-          }}
-        >
-          {({
-            errors,
-            touched,
-            handleSubmit,
-            setFieldTouched,
-            setFieldValue,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <div className="form-field">
-                <Editor editorState={text} onChange={setText} />
-              </div>
-              <button type="submit">Submit</button>
-            </form>
-          )}
-        </Formik>
-      </div>
+      <WrapperTheme pageTitle={'Create article'}>
+        <div className="draf-editor">
+          <Formik
+            initialValues={{ content: null }}
+            onSubmit={(values) => {
+              handleSave(values);
+            }}
+          >
+            {({
+              errors,
+              touched,
+              handleSubmit,
+              setFieldTouched,
+              setFieldValue,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <div className="form-field">
+                  <Editor editorState={text} onChange={setText} />
+                </div>
+                <button type="submit">Submit</button>
+              </form>
+            )}
+          </Formik>
+        </div>
+      </WrapperTheme>
     </>
   );
 };

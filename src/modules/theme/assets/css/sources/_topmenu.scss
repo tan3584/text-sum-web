@@ -58,6 +58,7 @@ $box-lang-dropdown-width: 90px;
   }
 
   .dropdown-item {
+
     &:hover,
     &:focus,
     &:active {
@@ -85,9 +86,10 @@ $box-lang-dropdown-width: 90px;
   text-align: right;
   padding: 0 15px;
   margin: -7px 0 30px;
+  background: #fff;
 
   @include media-min($lg) {
-    padding: 20px 0;
+    // padding: 20px 0;
     margin: 0 0 15px;
   }
 
@@ -107,7 +109,7 @@ $box-lang-dropdown-width: 90px;
     .ico {
       position: static;
       margin: 0;
-      font-size: 25px;
+      font-size: 20px;
     }
 
     &:hover {
@@ -134,10 +136,10 @@ $box-lang-dropdown-width: 90px;
       border-radius: 10px;
       color: $topmenu-badge-color;
       position: absolute;
-      padding: 7px 12px 5px;
-      font-size: 13px;
-      top: -15px;
-      right: -20px;
+      padding: 5px 10px 5px;
+      font-size: 9px;
+      top: -7px;
+      right: -16px;
     }
   }
 
@@ -243,7 +245,7 @@ $box-lang-dropdown-width: 90px;
       }
     }
 
-    > span {
+    >span {
       display: none;
       cursor: pointer;
       font-size: 16px;
@@ -268,13 +270,14 @@ $box-lang-dropdown-width: 90px;
       border-radius: 10px;
       height: 42px;
       margin: -18px 0;
-      img{
+
+      img {
         max-width: 100%;
       }
 
       @include media-min($lg) {
-        width: 56px;
-        height: 56px;
+        width: 40px;
+        height: 48px;
         margin: -25px 0;
       }
     }
@@ -299,13 +302,5 @@ $box-lang-dropdown-width: 90px;
       left: 0;
       top: 0;
     }
-  }
-}
-
-//
-// Onepage Component
-//
-.one-page {
-  .box-language {
   }
 }
