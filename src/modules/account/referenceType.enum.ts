@@ -1,0 +1,3 @@
+export enum REFERENCE_TYPE {
+  USER_PROFILE_IMG,
+}

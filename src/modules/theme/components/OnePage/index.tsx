@@ -27,9 +27,9 @@ const OnePage = (props: ComponentProps) => {
       >
         <div className="main">
           <header className="header">
-            <a href="/" title="Tada Truck" className="logo">
-              <img alt="Tada Truck" src={logo} />
-            </a>
+            {/* <a href="/" title="Jad" className="logo">
+              <img alt="Jad" src={logo} />
+            </a> */}
             <SwitchLanguages />
             <div className="header-title">{title}</div>
           </header>

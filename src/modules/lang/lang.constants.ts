@@ -12,27 +12,4 @@ export const languages: LanguageDto[] = [
     label: 'Tiếng Việt',
     shortLabel: 'VN',
   },
-  {
-    key: LANGUAGES.KR,
-    label: '한국어',
-    shortLabel: 'KR',
-  },
-];
-
-export const Customerlanguages: LanguageDto[] = [
-  {
-    key: LANGUAGES.EN,
-    label: 'English',
-    shortLabel: 'EN',
-  },
-  {
-    key: LANGUAGES.VI,
-    label: 'Tiếng Việt',
-    shortLabel: 'VN',
-  },
-  {
-    key: LANGUAGES.KR,
-    label: '한국어',
-    shortLabel: 'KR',
-  },
 ];

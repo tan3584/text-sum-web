@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { LanguageStoreContext } from '@/modules/lang/lang.store';
 import { Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { Customerlanguages, languages } from '@/modules/lang/lang.constants';
+import { languages } from '@/modules/lang/lang.constants';
 import { retrieveFromStorage, saveToStorage } from '@/libs/utils/storage.util';
 import { AuthenticationStoreContext } from '@/modules/authentication.store';
 import { AccountStoreContext } from '@/modules/account/account.store';

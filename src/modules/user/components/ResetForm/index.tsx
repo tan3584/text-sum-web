@@ -1,25 +1,23 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import LoginForm from '@/modules/account/components/LoginForm';
+import ResetForm from '@/modules/account/components/ResetForm';
 
 interface ComponentProps {
   style?: React.CSSProperties;
   className?: string;
   children?: React.ReactNode;
-  handleLogin: any;
-  handleForgotPassword: any;
-  handleSignUp?: any;
+  handleConfirm: any;
   formTitle?: string;
   initialValues?: any;
   userEmail?: string;
 }
 
-const UserLoginForm = (props: ComponentProps) => {
+const UserResetForm = (props: ComponentProps) => {
   return (
     <>
-      <LoginForm {...props} />
+      <ResetForm {...props} />
     </>
   );
 };
 
-export default observer(UserLoginForm);
+export default observer(UserResetForm);

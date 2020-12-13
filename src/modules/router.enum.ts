@@ -7,8 +7,17 @@ export enum USER_ROUTERS {
   CREATE = '/account/register',
   SETUP = '/account/setup',
   THANKYOU = '/account/thankyou/:action',
-  ADMIN_MANAGE = '/admin/customer',
-  ADMIN_CREATE = '/admin/customer/register',
-  ADMIN_EDIT = '/admin/customer/:userId',
-  ADMIN_MANAGE_DELETED = '/admin/customer/deleted',
+  ADMIN_MANAGE = '/admin/user',
+  ADMIN_CREATE = '/admin/user/register',
+  ADMIN_EDIT = '/admin/user/:userId',
+  ADMIN_MANAGE_DELETED = '/admin/user/deleted',
+}
+
+export enum USER_ACTION_ROUTERS {
+  THANKYOU = '/account/thankyou/',
+}
+
+export enum API {
+  USER = 'api/user',
+  TOPIC = 'api/topic',
 }

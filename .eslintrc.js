@@ -9,5 +9,6 @@ module.exports = {
       },
     ],
     quotes: [2, 'single'],
+    'no-use-before-define': ['error', { variables: false }],
   },
 };
