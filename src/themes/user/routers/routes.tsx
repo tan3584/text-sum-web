@@ -10,7 +10,7 @@ export const userDefaultRoutes = [
     permission: '',
     component: React.lazy(() => import('@/themes/user/page/Home')),
     isLayout: false,
-    isGuarded: true,
+    isGuarded: false,
   },
   ...userRoutes,
 ];

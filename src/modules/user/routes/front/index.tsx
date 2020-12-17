@@ -97,6 +97,6 @@ export const userRoutes = [
     exact: true,
     component: React.lazy(() => import('@/modules/article/pages/create/index')),
     isLayout: false,
-    isGuarded: false,
+    isGuarded: true,
   },
 ];

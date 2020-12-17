@@ -2,6 +2,7 @@ import axios from 'axios';
 import { handleResponseError } from '@/libs/utils/apis.util';
 import { removeFromStorage } from '@/libs/utils/storage.util';
 import { toast } from 'react-toastify';
+import { THEMES, VALIDATE_TOKEN_URL } from '@/theme.enum';
 import { Errors } from '@/modules/message/message.constants';
 import i18n from 'i18next';
 
@@ -59,10 +60,18 @@ axiosInstance.interceptors.response.use(
       messageCode = data?.errorCode ?? '';
     }
 
-    // if (error.response.config.url === validateTokenUrl) {
-    //   removeFromStorage('token');
-    //   window.location.replace('/');
-    // }
+    let validateTokenUrl = null;
+    if (process.env.REACT_APP_THEME === THEMES.USER) {
+      validateTokenUrl = VALIDATE_TOKEN_URL.USER;
+    }
+    if (process.env.REACT_APP_THEME === THEMES.ADMIN) {
+      validateTokenUrl = VALIDATE_TOKEN_URL.ADMIN;
+    }
+
+    if (error.response.config.url === validateTokenUrl) {
+      removeFromStorage('token');
+      window.location.replace('/');
+    }
     if (messageCode !== '') {
       const error = Errors.find((error) => error.key === messageCode);
       if (error) toast.error(i18n.t(error.label));

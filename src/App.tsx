@@ -9,7 +9,7 @@ import UserRouter from './themes/user/routers';
 
 function App() {
   // const languageStore = React.useContext(LanguageStoreContext);
-  const firebaseStore = React.useContext(FirebaseStoreContext);
+  // const firebaseStore = React.useContext(FirebaseStoreContext);
   // const notiStore = React.useContext(NotificationStoreContext);
 
   // const authStore = React.useContext(AuthenticationStoreContext);
@@ -21,18 +21,18 @@ function App() {
   //   });
   // }
 
-  React.useEffect(() => {
-    if (messaging) {
-      messaging
-        .getToken()
-        .then((token) => {
-          saveToStorage(LOCAL_STORAGE_KEY.DEVICE_TOKEN, token);
-        })
-        .catch(() => {
-          console.error('Permission notification - Granted');
-        });
-    }
-  }, [firebaseStore]);
+  // React.useEffect(() => {
+  //   if (messaging) {
+  //     messaging
+  //       .getToken()
+  //       .then((token) => {
+  //         saveToStorage(LOCAL_STORAGE_KEY.DEVICE_TOKEN, token);
+  //       })
+  //       .catch(() => {
+  //         console.error('Permission notification - Granted');
+  //       });
+  //   }
+  // }, [firebaseStore]);
 
   // React.useEffect(() => {
   //   const deviceId = retrieveFromStorage(LOCAL_STORAGE_KEY.DEVICE_TOKEN);

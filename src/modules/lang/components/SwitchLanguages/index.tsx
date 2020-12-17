@@ -33,7 +33,7 @@ const SwitchLanguages = (props: ComponentProps) => {
    */
   const onChangeLanguage = async (key: string) => {
     await i18n.changeLanguage(key);
-    // langStore.setActiveLanguage(key);
+    langStore.setActiveLanguage(key);
     saveToStorage('lang', key);
     if (auth.loggedUser && existedToken) {
       await accountStore.changeLanguage(auth.loggedUser.id, existedToken, key);
@@ -42,6 +42,7 @@ const SwitchLanguages = (props: ComponentProps) => {
 
   React.useEffect(() => {
     if (auth.loggedUser && existedToken) {
+      console.log(existedToken);
       accountStore.changeLanguage(
         auth.loggedUser.id,
         existedToken,

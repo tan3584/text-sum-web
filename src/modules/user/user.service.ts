@@ -20,42 +20,6 @@ class UserService {
     return result.data?.result;
   }
 
-  public async uploadCardFront(data: any, id: number) {
-    const form = new FormData();
-    form.append('image', data);
-
-    const config = {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    };
-
-    const result = await http.post(
-      `${this.prefix}/${id}/upload-card-front`,
-      form,
-      config
-    );
-    return result.data?.result;
-  }
-
-  public async uploadCardBack(data: any, id: number) {
-    const form = new FormData();
-    form.append('image', data);
-
-    const config = {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    };
-
-    const result = await http.post(
-      `${this.prefix}/${id}/upload-card-back`,
-      form,
-      config
-    );
-    return result.data?.result;
-  }
-
   public async uploadAvatar(data: any, id: number) {
     const form = new FormData();
     form.append('image', data);
