@@ -99,4 +99,15 @@ export const userRoutes = [
     isLayout: false,
     isGuarded: true,
   },
+  {
+    path: USER_ROUTERS.NEW_ARTILE_LIST,
+    name: 'newarticle',
+    title: 'Articles',
+    exact: true,
+    component: React.lazy(
+      () => import('@/modules/article/pages/newlist/index')
+    ),
+    isLayout: false,
+    isGuarded: false,
+  },
 ];

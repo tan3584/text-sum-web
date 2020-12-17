@@ -1,10 +1,12 @@
 import { observable, action } from 'mobx';
 import accountService from 'modules/account/account.service';
 import React from 'react';
-import { CreateArticleDto } from './article.dto';
+import { ArticleListDto, CreateArticleDto } from './article.dto';
 import articleService from './article.service';
 
 class ArticleStore {
+  @observable articleList = null;
+  @observable totalArticle: number = 0;
   @observable createArticleForm: CreateArticleDto = {
     subject: '',
     description: '',
@@ -19,6 +21,13 @@ class ArticleStore {
   async createArticle() {
     const data = await articleService.createArticle(this.createArticleForm);
     return data;
+  }
+
+  @action
+  async getNewArticle(criteriaDto: ArticleListDto) {
+    const result = await articleService.getNewArticle(criteriaDto);
+    this.articleList = result.data?.result[0];
+    this.totalArticle = result.data?.result[1];
   }
 }
 
