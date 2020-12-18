@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArticleStoreContext } from '../../article.store';
-
+import { observer } from 'mobx-react-lite';
+import ArticlePreview from '../ArticlePreview';
+import styles from './index.module.css';
 /*
  * Props of Component
  */
@@ -10,11 +12,10 @@ interface ComponentProps {
   children?: React.ReactNode;
   title?: string;
   totals: number;
-  handleChangePageItem: any;
-  current: number;
+  handleChangePageItem?: any;
 }
 
-const NewArticlePage = (props: ComponentProps) => {
+const NewArticleList = (props: ComponentProps) => {
   const articleStore = React.useContext(ArticleStoreContext);
 
   /*
@@ -27,7 +28,6 @@ const NewArticlePage = (props: ComponentProps) => {
     title,
     totals,
     handleChangePageItem,
-    current,
   } = props;
 
   /*
@@ -43,7 +43,23 @@ const NewArticlePage = (props: ComponentProps) => {
       setTotalPage(Math.ceil(totals / 2));
     }
   }, [articleStore.articleList, articleStore, totals]);
-  return <>123</>;
+  return (
+    <>
+      <ul className={styles.grid}>
+        {articleStore.articleList && totals > 0 ? (
+          articleStore.articleList.map((item: any, index: number) => (
+            <li key={index}>
+              <ArticlePreview orderItem={item} />
+            </li>
+          ))
+        ) : (
+          <>
+            <div className="message no-item">There is no item</div>
+          </>
+        )}
+      </ul>
+    </>
+  );
 };
 
-export default NewArticlePage;
+export default observer(NewArticleList);

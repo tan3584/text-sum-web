@@ -1,11 +1,11 @@
 import { observable, action } from 'mobx';
-import accountService from 'modules/account/account.service';
 import React from 'react';
 import { ArticleListDto, CreateArticleDto } from './article.dto';
 import articleService from './article.service';
+import { removeUnusedProps } from '@/libs/utils/apis.util';
 
 class ArticleStore {
-  @observable articleList = null;
+  @observable articleList: any[] = [];
   @observable totalArticle: number = 0;
   @observable createArticleForm: CreateArticleDto = {
     subject: '',
@@ -26,8 +26,8 @@ class ArticleStore {
   @action
   async getNewArticle(criteriaDto: ArticleListDto) {
     const result = await articleService.getNewArticle(criteriaDto);
-    this.articleList = result.data?.result[0];
-    this.totalArticle = result.data?.result[1];
+    this.articleList = result[0];
+    this.totalArticle = result[1];
   }
 }
 

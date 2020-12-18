@@ -3,10 +3,11 @@ import React from 'react';
 import WrapperTheme from '@/modules/theme/components/Wrapper';
 import { ArticleStoreContext } from '../../article.store';
 import { ArticleListDto } from '../../article.dto';
+import NewArticleList from '../../components/NewArticlelist';
 
 const NewArticlePage = () => {
   const articleStore = React.useContext(ArticleStoreContext);
-  const pageSize: number = 2;
+  const pageSize: number = 5;
   /*
    * Get list by criteria
    */
@@ -24,8 +25,8 @@ const NewArticlePage = () => {
   });
   return (
     <>
-      <WrapperTheme pageTitle={'New article'}>
-        <NewArticlePage />
+      <WrapperTheme pageTitle={'Articles'}>
+        <NewArticleList totals={articleStore.totalArticle} />
       </WrapperTheme>
     </>
   );
