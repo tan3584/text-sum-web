@@ -20,6 +20,7 @@ $block-time-item-font-size: 18px;
 }
 
 .page-title {
+  display: none !important;
   font-size: $page-title-font-size;
   margin: 0 0 7px;
 }
@@ -33,9 +34,10 @@ $block-time-item-font-size: 18px;
   @include media-min($md) {
     text-align: right;
   }
-  
+
   &.card {
     border: 0;
+    background: none;
   }
 
   .card-body {

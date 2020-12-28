@@ -18,6 +18,7 @@ interface ComponentProps {
 }
 
 const ArticlePreview = (props: ComponentProps) => {
+  const host = process.env.FRONT_END_HOST;
   const handleDate = (date: any) => {
     const pattern = 'EEEE, d MMM, yyyy';
     const result = parseISO(date);
@@ -36,7 +37,7 @@ const ArticlePreview = (props: ComponentProps) => {
   const { style, className, children, title, orderItem } = props;
   return (
     <>
-      <Link className={styles.inList} to={''}>
+      <Link className={styles.inList} to={`/article/${orderItem.uuid}`}>
         <div className={styles.leadMediaThumb}>
           <img src={sampleBlog} alt={''} />
         </div>

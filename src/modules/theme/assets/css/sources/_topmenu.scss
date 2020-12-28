@@ -24,7 +24,7 @@ $box-lang-dropdown-width: 90px;
     padding: 0;
     min-width: auto;
     text-transform: uppercase;
-    border: $topmenu-border;
+    // border: $topmenu-border;
     display: inline-block;
     padding: 12px 20px 8px;
     border-radius: $border-radius-sm;
@@ -58,7 +58,6 @@ $box-lang-dropdown-width: 90px;
   }
 
   .dropdown-item {
-
     &:hover,
     &:focus,
     &:active {
@@ -245,7 +244,7 @@ $box-lang-dropdown-width: 90px;
       }
     }
 
-    >span {
+    > span {
       display: none;
       cursor: pointer;
       font-size: 16px;
@@ -277,8 +276,7 @@ $box-lang-dropdown-width: 90px;
 
       @include media-min($lg) {
         width: 40px;
-        height: 48px;
-        margin: -25px 0;
+        height: 37px;
       }
     }
   }

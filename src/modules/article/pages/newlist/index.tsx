@@ -4,10 +4,11 @@ import WrapperTheme from '@/modules/theme/components/Wrapper';
 import { ArticleStoreContext } from '../../article.store';
 import { ArticleListDto } from '../../article.dto';
 import NewArticleList from '../../components/NewArticlelist';
+import { Button } from 'react-bootstrap';
 
 const NewArticlePage = () => {
   const articleStore = React.useContext(ArticleStoreContext);
-  const pageSize: number = 5;
+  let pageSize: number = 5;
   /*
    * Get list by criteria
    */
@@ -22,11 +23,23 @@ const NewArticlePage = () => {
 
   React.useEffect(() => {
     articleStore.getNewArticle(criteriaDto);
-  });
+  }, [articleStore, criteriaDto]);
   return (
     <>
       <WrapperTheme pageTitle={'Articles'}>
         <NewArticleList totals={articleStore.totalArticle} />
+        <div className="btn-session">
+          <Button
+            onClick={() => {
+              criteriaDto.take = pageSize + 5;
+              pageSize += 5;
+              articleStore.getNewArticle(criteriaDto);
+            }}
+          >
+            <span>{'more'}</span>
+            <i className="ico"></i>
+          </Button>
+        </div>
       </WrapperTheme>
     </>
   );
