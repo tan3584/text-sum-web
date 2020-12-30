@@ -46,7 +46,7 @@ const ArticlePreview = (props: ComponentProps) => {
             {orderItem.subject}
           </h3>
           <div className={styles.excerpt}>
-            <p>{orderItem.description}</p>
+            <p>{orderItem.sumarization}</p>
           </div>
           <div className={styles.date}>{time}</div>
         </div>
