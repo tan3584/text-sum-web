@@ -22,5 +22,14 @@ class ArticleService {
     );
     return result.data?.result;
   }
+
+  public async getFilteredArticle(criteriaDto: ArticleListDto) {
+    const result = await http.get(
+      `${this.Prefix}/filter${prepareGetQuery({
+        ...criteriaDto,
+      })}`
+    );
+    return result.data?.result;
+  }
 }
 export default new ArticleService();

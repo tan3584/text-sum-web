@@ -13,6 +13,7 @@ export enum USER_ROUTERS {
   ADMIN_MANAGE_DELETED = '/admin/user/deleted',
   CREATE_ARTICLE = '/create/new-article',
   NEW_ARTILE_LIST = '/article',
+  SEARCH_PAGE = '/filter',
 }
 
 export enum USER_ACTION_ROUTERS {

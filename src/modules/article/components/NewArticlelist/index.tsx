@@ -38,7 +38,6 @@ const NewArticleList = (props: ComponentProps) => {
   const [totalPage, setTotalPage] = React.useState<number>(0);
 
   React.useEffect(() => {
-    console.log(articleStore.articleList);
     if (articleStore.articleList) {
       setTotalPage(Math.ceil(totals / 2));
     }

@@ -110,4 +110,13 @@ export const userRoutes = [
     isLayout: false,
     isGuarded: false,
   },
+  {
+    path: USER_ROUTERS.SEARCH_PAGE,
+    name: 'search',
+    title: 'Filtered Articles',
+    exact: true,
+    component: React.lazy(() => import('@/modules/article/pages/search/index')),
+    isLayout: false,
+    isGuarded: false,
+  },
 ];

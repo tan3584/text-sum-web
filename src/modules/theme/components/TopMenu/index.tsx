@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useHistory } from 'react-router-dom';
 
@@ -9,6 +9,16 @@ import SwitchLanguages from '@/modules/lang/components/SwitchLanguages';
 import NotificationSummary from '@/modules/notification/components/Summary';
 import AccountSummary from '@/modules/account/components/AccountSummary';
 import { USER_ROUTERS } from '@/modules/router.enum';
+import FilterBy from '@/libs/components/FilterBy';
+import { pageSizeOptions } from '@/libs/constants/paging.constants';
+import { FilterByDto } from '@/libs/dto/FilterBy.dto';
+import {
+  ArticleListDto,
+  FilterArticleListDto,
+} from '@/modules/article/article.dto';
+import { ArticleStoreContext } from '@/modules/article/article.store';
+import { reaction } from 'mobx';
+import { prepareGetQuery } from '@/libs/utils/routes.util';
 /*
  * Props of Component
  */
@@ -18,7 +28,22 @@ interface ComponentProps {
 }
 
 const TopMenu = (props: ComponentProps) => {
+  const articleStore = React.useContext(ArticleStoreContext);
   const history = useHistory();
+
+  /*
+   * Setting filters
+   */
+  // const filters: FilterByDto[] = [
+  //   {
+  //     key: 'email',
+  //     label: 'topic',
+  //   },
+  //   {
+  //     key: 'phoneNumber',
+  //     label: 'description',
+  //   },
+  // ];
 
   /*
    * Props of Component
@@ -33,11 +58,56 @@ const TopMenu = (props: ComponentProps) => {
   } = props;
 
   /*
+   * Seleted ids in grid
+   */
+  const [filtered, setFiltered] = React.useState<boolean>(false);
+
+  /*
+   * Get list by criteria
+   */
+  const [criteriaDto, setCriteriaDto] = React.useState<FilterArticleListDto>({
+    skip: 0,
+    take: +pageSizeOptions[0],
+  });
+
+  const [inittial, setInitial] = React.useState<string>('');
+
+  /*
+   * Action of search button
+   * @param: any e
+   * @param: FilterByDto filterType
+   * @return: void
+   */
+  const handleFilter = async (e: any) => {
+    await setCriteriaDto({
+      skip: 0,
+      take: +pageSizeOptions[0],
+      searchKeyword: e.target.search.value,
+    });
+  };
+
+  // const getFiltered = () => {
+  //   articleStore.getNewArticle(criteriaDto);
+  // };
+  /*
    * Setting logo responsive
    */
   const isMobile = useMediaQuery({
     query: '(max-width: 991px)',
   });
+  const isMounted = useRef(false);
+
+  React.useEffect(() => {
+    if (isMounted.current) {
+      history.push(
+        `/filter${prepareGetQuery({
+          ...criteriaDto,
+        })}`
+      );
+    } else {
+      isMounted.current = true;
+    }
+  }, [criteriaDto, history]);
 
   return (
     <>
@@ -56,6 +126,7 @@ const TopMenu = (props: ComponentProps) => {
             />
           </div>
         )}
+        <FilterBy handleFilter={handleFilter} filtered={filtered} />
         <NotificationSummary />
         <AccountSummary />
         <SwitchLanguages />

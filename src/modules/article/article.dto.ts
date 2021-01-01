@@ -11,3 +11,11 @@ export interface ArticleListDto {
   searchBy?: string;
   searchKeyword?: string;
 }
+export interface FilterArticleListDto {
+  skip?: number;
+  take?: number;
+  orderBy?: string;
+  orderDirection?: 'ASC' | 'DESC';
+  searchBy?: string;
+  searchKeyword?: string;
+}
