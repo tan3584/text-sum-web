@@ -14,6 +14,7 @@ export enum USER_ROUTERS {
   CREATE_ARTICLE = '/create/new-article',
   NEW_ARTILE_LIST = '/article',
   SEARCH_PAGE = '/filter',
+  ARTICLE_PAGE = '/post/:id',
 }
 
 export enum USER_ACTION_ROUTERS {

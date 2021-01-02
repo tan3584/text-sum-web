@@ -119,4 +119,15 @@ export const userRoutes = [
     isLayout: false,
     isGuarded: false,
   },
+  {
+    path: USER_ROUTERS.ARTICLE_PAGE,
+    name: 'article',
+    title: 'Articles Page',
+    exact: true,
+    component: React.lazy(
+      () => import('@/modules/article/pages/article/index')
+    ),
+    isLayout: false,
+    isGuarded: false,
+  },
 ];

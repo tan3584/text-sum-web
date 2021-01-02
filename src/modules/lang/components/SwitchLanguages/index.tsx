@@ -42,7 +42,6 @@ const SwitchLanguages = (props: ComponentProps) => {
 
   React.useEffect(() => {
     if (auth.loggedUser && existedToken) {
-      console.log(existedToken);
       accountStore.changeLanguage(
         auth.loggedUser.id,
         existedToken,

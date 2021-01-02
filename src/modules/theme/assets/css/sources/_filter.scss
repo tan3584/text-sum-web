@@ -10,12 +10,12 @@
   .form-control {
     font-size: 16px;
     padding: 10px 20px;
-    height: 48px;
+    height: 35px;
     line-height: 1.2;
     border-radius: $border-radius-sm;
     background-color: #ffff;
     border: 1px solid #e2e2e2;
-    width: calc(100% - 58px);
+    // width: calc(100% - 58px);
     margin-right: 10px;
     display: inline-block;
   }

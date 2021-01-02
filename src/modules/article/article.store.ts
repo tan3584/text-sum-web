@@ -7,6 +7,7 @@ class ArticleStore {
   @observable articleList: any[] = [];
   @observable totalArticle: number = 0;
   @observable resultArticleList: any[] = [];
+  @observable article: any[] = [];
   @observable totalResult: number = 0;
   @observable createArticleForm: CreateArticleDto = {
     subject: '',
@@ -36,6 +37,12 @@ class ArticleStore {
     const result = await articleService.getFilteredArticle(criteriaDto);
     this.resultArticleList = result[0];
     this.totalResult = result[1];
+  }
+
+  @action
+  async getArticle(id: string) {
+    const result = await articleService.getArticle(id);
+    this.article = result;
   }
 }
 

@@ -31,5 +31,10 @@ class ArticleService {
     );
     return result.data?.result;
   }
+
+  public async getArticle(id: string) {
+    const result = await http.get(`${this.Prefix}/${id}`);
+    return result.data?.result;
+  }
 }
 export default new ArticleService();

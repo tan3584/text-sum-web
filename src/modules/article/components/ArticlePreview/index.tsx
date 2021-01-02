@@ -37,7 +37,7 @@ const ArticlePreview = (props: ComponentProps) => {
   const { style, className, children, title, orderItem } = props;
   return (
     <>
-      <Link className={styles.inList} to={`/article/${orderItem.uuid}`}>
+      <Link className={styles.inList} to={`/post/${orderItem.uuid}`}>
         <div className={styles.leadMediaThumb}>
           <img src={sampleBlog} alt={''} />
         </div>

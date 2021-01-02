@@ -57,9 +57,9 @@ const FilterBy = (props: ComponentProps) => {
                 placeholder={t(FILTER_SEARCH)}
                 name="search"
               />
-              <Button type="submit">
+              {/* <Button type="submit">
                 <i className="ico ico-o-next"></i>
-              </Button>
+              </Button> */}
             </div>
           </Form.Group>
           {children}
