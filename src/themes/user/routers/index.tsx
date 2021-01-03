@@ -35,6 +35,7 @@ const UserRouter = () => {
 
   React.useEffect(() => {
     const existedToken = retrieveFromStorage('token');
+    console.log(existedToken);
     if (!existedToken && isGuarded(location.pathname, userDefaultRoutes)) {
       history.push(USER_ROUTERS.LOGIN);
     }
@@ -43,17 +44,17 @@ const UserRouter = () => {
       (!authStore.loggedUser || authStore.loggedUser === null)
     ) {
       authStore.validateToken(existedToken, history);
-      // if (location.pathname === '/') {
-      //   history.push(USER_ROUTERS.SETUP);
-      //   commonStore.setActiveMenu(USER_ROUTERS.SETUP);
-      // }
+      if (location.pathname === '/') {
+        history.push(USER_ROUTERS.SETUP);
+        commonStore.setActiveMenu(USER_ROUTERS.SETUP);
+      }
     }
     if (existedToken && !isExisting(location.pathname, userDefaultRoutes)) {
-      // history.push(USER_ROUTERS.SETUP);
-      // commonStore.setActiveMenu(USER_ROUTERS.SETUP);
+      history.push(USER_ROUTERS.SETUP);
+      commonStore.setActiveMenu(USER_ROUTERS.SETUP);
     }
     if (existedToken && authStore.loggedUser) {
-      // history.push(USER_ROUTERS.SETUP);
+      history.push(USER_ROUTERS.SETUP);
     }
   }, [history, authStore, location.pathname, commonStore]);
 
