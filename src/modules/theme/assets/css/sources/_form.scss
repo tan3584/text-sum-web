@@ -734,13 +734,13 @@ td.col-actions {
       }
     }
   }
-  .rdt{
+  .rdt {
     display: inline-block;
     min-width: 330px;
     margin-left: -145px;
     float: right;
     width: calc(100% - 205px);
-    input{
+    input {
       display: flex;
       flex-grow: 1;
       flex-shrink: 0;
@@ -752,6 +752,13 @@ td.col-actions {
       margin: 0;
       width: 100%;
       height: 46px;
+    }
+  }
+  &.form-article {
+    margin: auto;
+    width: 50%;
+    input {
+      border: 1px solid #dedddd;
     }
   }
 }

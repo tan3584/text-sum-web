@@ -63,7 +63,9 @@ const ArticleForm = (props: ComponentProps) => {
               e.preventDefault();
               handleSubmit();
             }}
-            className={`form form-register ${className ? className : ''}`}
+            className={`form form-register form-article ${
+              className ? className : ''
+            }`}
             style={style}
           >
             {children}

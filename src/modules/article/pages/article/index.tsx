@@ -15,7 +15,7 @@ const Article = () => {
   return (
     <>
       <WrapperTheme pageTitle={'Articles'}>
-        <ArticlePost data={articleStore.article} />
+        <ArticlePost />
       </WrapperTheme>
     </>
   );

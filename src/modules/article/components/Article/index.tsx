@@ -56,7 +56,39 @@ const ArticlePost = (props: ComponentProps) => {
   //     </aside>
   //   </div>
   // </article>;
-  return <></>;
+
+  return (
+    <>
+      <article className={styles.root}>
+        {sampleBlog && (
+          <div className={styles.mainImage}>
+            <img src={sampleBlog} alt={''} />
+          </div>
+        )}
+        <div className={styles.grid}>
+          <div className={styles.mainContent}>
+            <h1 className={styles.title}>123</h1>
+            <p>12312312</p>
+          </div>
+          <aside className={styles.metaContent}>
+            {/* {data.createdAt && <div className={styles.publishedAt}>{time}</div>} */}
+            {/* {authors && <AuthorList items={authors} title="Authors" />} */}
+            {/* {categories && ( */}
+            <div className={styles.categories}>
+              <h3 className={styles.categoriesHeadline}>Categories</h3>
+              <ul>
+                {/* {categories.map((category) => (
+                  <li key={category._id}>{category.title}</li>
+                ))} */}
+              </ul>
+            </div>
+            {/* )} */}
+          </aside>
+        </div>
+      </article>
+      ;
+    </>
+  );
 };
 
 export default observer(ArticlePost);
